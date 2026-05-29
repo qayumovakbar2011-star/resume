@@ -7,7 +7,7 @@ import { useState } from "react";
 const Register = () => {
 
     const navigate = useNavigate();
-    const { data}: any = useGetUsersQuery("/users");
+    const { data }: any = useGetUsersQuery("/users");
 
     const [phone, setPhone] = useState("");
     const [password, setPassword] = useState("");
@@ -18,15 +18,23 @@ const Register = () => {
 
     function login() {
 
-        const a = data.find((itm:any)=>{
-            return itm.phone === phone && itm.password === password
-        })
-        
-        localStorage.setItem("userId", a.id)
+        if (!data) return;
+
+        const a = data.find((itm: any) => {
+            return itm.phone === phone && itm.password === password;
+        });
+
+        if (!a) {
+            alert("Login yoki password xato!");
+            return;
+        }
+
+        localStorage.setItem("userId", String(a.id));
 
         setPhone("");
         setPassword("");
-        navigate("/home")
+
+        navigate("/home");
     }
 
     return (

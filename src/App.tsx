@@ -4,6 +4,7 @@ import Register1 from "./Register1";
 import Home from "./Home";
 import Surovnoma from "./Surovnoma";
 import Resume from "./Resume";
+import Resume1 from "./Resume1";
 
 const App = () => {
 
@@ -44,21 +45,15 @@ const App = () => {
                 <div className="collapse navbar-collapse justify-content-end" id="navMenu">
                     <ul className="navbar-nav gap-3 text-center">
 
-                        <li className="nav-item">
+                        <li onClick={() => navigate("/")} className="nav-item">
                             <span className="nav-link text-white fw-semibold nav-hover">
-                                Home
+                                SignIn
                             </span>
                         </li>
 
-                        <li className="nav-item">
+                        <li onClick={() => navigate("/register")} className="nav-item">
                             <span className="nav-link text-white fw-semibold nav-hover">
-                                About
-                            </span>
-                        </li>
-
-                        <li className="nav-item">
-                            <span className="nav-link text-white fw-semibold nav-hover">
-                                Contact
+                                SignUp
                             </span>
                         </li>
 
@@ -71,6 +66,7 @@ const App = () => {
                 <Route path="/home" element={<Home />} />
                 <Route path="/surovnoma" element={<Surovnoma />} />
                 <Route path="/check-resume" element={<Resume />} />
+                <Route path="/check-resume1/:id" element={<Resume1 />} />
             </Routes>
         </div>
     )

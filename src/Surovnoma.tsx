@@ -11,6 +11,7 @@ const Surovnoma = (props: any) => {
 
     const [type, setType] = useState("");
     const [checked, setChecked] = useState(false);
+    const [checked1, setChecked1] = useState(false);
     const navigate = useNavigate();
 
     function goCheckResume() {
@@ -262,7 +263,7 @@ const Surovnoma = (props: any) => {
                                                             <label className="form-label">hali tugatmagan bo'lsangiz bu yerni bosing</label>
                                                             <input
                                                                 type="checkbox"
-                                                                className="form-check-input"
+                                                                checked={checked}
                                                                 onChange={(e) => setChecked(e.target.checked)}
                                                             />
                                                         </div>
@@ -284,7 +285,9 @@ const Surovnoma = (props: any) => {
 
                                                 <Drawer.Close asChild>
                                                     <div className="col-12 mt-3">
-                                                        <button onClick={() => props.addExperience()} className="btn w-100 save-btn fw-bold py-2">
+                                                        <button onClick={() => {props.addExperience()
+                                                            setChecked(false)
+                                                        }} className="btn w-100 save-btn fw-bold py-2">
                                                             💾 Save Experience
                                                         </button>
                                                     </div>
@@ -358,12 +361,12 @@ const Surovnoma = (props: any) => {
                                                             <label className="form-label">hali tugatmagan bo'lsangiz bu yerni bosing</label>
                                                             <input
                                                                 type="checkbox"
-                                                                className="form-check-input"
-                                                                onChange={(e) => setChecked(e.target.checked)}
+                                                                checked={checked1}
+                                                                onChange={(e) => setChecked1(e.target.checked)}
                                                             />
                                                         </div>
                                                     </div>
-                                                    {!checked && (
+                                                    {!checked1 && (
                                                         <input
                                                             onChange={(e) => props.getEduEndDate(e.target.value)}
                                                             type="date"
@@ -384,7 +387,9 @@ const Surovnoma = (props: any) => {
 
                                                 <Drawer.Close asChild>
                                                     <div className="col-12 mt-3">
-                                                        <button onClick={() => props.addEducation()} className="btn w-100 edu-save-btn fw-bold py-2">
+                                                        <button onClick={() => {props.addEducation()
+                                                            setChecked1(false)
+                                                        }} className="btn w-100 edu-save-btn fw-bold py-2">
                                                             🎓 Save Education
                                                         </button>
                                                     </div>
